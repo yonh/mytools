@@ -1,0 +1,16 @@
+<meta charset='utf-8'/>
+<textarea id='txt' style='width:100%;height:30%'></textarea>
+<input type='button' onclick='run()' value='open'/>
+<a href='/'>return index</a>
+<iframe id='f' name='f' style='width:100%;height:65%'></iframe>
+<script type='text/javascript'>
+function run()
+{
+    var code = document.getElementById('txt').value;
+    var win = window.open('','f','');
+    win.document.open('text/html', 'replace');
+    win.opener = null;
+    win.document.write(code);
+    win.document.close();
+}
+</script>
