@@ -21,10 +21,11 @@ RUN apt-get -y install ruby ruby-dev
 #增加http://ruby.taobao.org/源
 #RUN gem sources -a https://ruby.taobao.org/
 RUN gem install --no-rdoc --no-ri sinatra rqrcode_png
+RUN sed -i "s/:DoNotReverseLookup => nil/:DoNotReverseLookup=> true/g" /usr/lib/ruby/1.9.1/webrick/config.rb
 ADD app /opt/webapp/
 RUN mkdir -p /opt/webapp
 
 #公开端口
-EXPOSE 4567
+EXPOSE 80
 
 CMD [ "/opt/webapp/run" ]
