@@ -28,4 +28,6 @@ RUN mkdir -p /opt/webapp
 #公开端口
 EXPOSE 80
 
-CMD [ "/opt/webapp/run" ]
+ADD run.sh /run.sh
+RUN chmod +x /run.sh
+CMD [ "/run.sh" ]
