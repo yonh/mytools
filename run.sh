@@ -1,6 +1,6 @@
 #!/bin/bash
 
 #ruby /opt/webapp/webrick.rb
-cd /opt/webapp
+cd /app
 thin start
 

@@ -1,0 +1,12 @@
+version: '2'
+
+services:
+  app:
+    container_name: mytools
+    build: .
+    ports:
+      - "4567:80"
+    image: yonh/mytools
+    #restart: always
+#    volumes:
+#      - .:/app
