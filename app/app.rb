@@ -4,7 +4,9 @@ require 'rqrcode_png'
 require 'base64'
 require 'digest/md5'
 require 'digest/sha1'
-require "socket"
+require 'socket'
+require 'json'
+require 'cgi'
 
 class String
 	  def md5
@@ -44,9 +46,19 @@ class App < Sinatra::Application
 	end
 
 	
-
 	get '/html' do
 	  erb :'html/index'
+	end
+
+	get '/json' do
+		erb :'json/index'
+	end
+	
+	post '/json' do
+		@json_s = params['json']
+		@json = CGI.escape_html((JSON.pretty_generate(JSON.parse(params['json']))))
+		
+		erb :'json/index'
 	end
 
 	get '/hash' do
